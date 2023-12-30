@@ -183,6 +183,11 @@ class OrderServiceTest {
         Stock stock1 = Stock.create("001", 2);
         Stock stock2 = Stock.create("002", 1);
 
+        // 분명 주문 생성을 하기 위한 테스트인데 재고 차감에 대한 case.
+        // 맥락 이해를 위해 생각을 해야 함.
+        // 주문 생성에 대한 결과를 봐야 하는데, given절에서 실패하면 유추가 어렵다.
+        stock1.deductQuantity(1);
+
         stockRepository.saveAll(List.of(stock1, stock2));
 
         OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
